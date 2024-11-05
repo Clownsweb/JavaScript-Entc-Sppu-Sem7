@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Operations</title>
+</head>
+<body>
+    <h2>String Operations</h2>
+
+    <p id="reverse-result"></p>
+    <p id="replace-result"></p>
+    <p id="palindrome-result"></p>
+
+    <script>
+        const originalStr = "madam";
+        const newStr = "hello";
+
+        function reverseString(s) {
+            return s.split("").reverse().join("");
+        }
+
+        function replaceString(s, replacement) {
+            return replacement;
+        }
+
+        function isPalindrome(s) {
+            const reversed = s.split("").reverse().join("");
+            return s === reversed;
+        }
+
+        document.getElementById("reverse-result").innerHTML = "Reversed string: " + reverseString(originalStr);
+        document.getElementById("replace-result").innerHTML = "String after replacement: " + replaceString(originalStr, newStr);
+        document.getElementById("palindrome-result").innerHTML = "Is the string a palindrome? " + (isPalindrome(originalStr) ? "True" : "False");
+    </script>
+</body>
+</html>
