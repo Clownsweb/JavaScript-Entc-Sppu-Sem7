@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Information Form</h1>
+    <form id="studentForm">
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="text" id="address" placeholder="Address" required>
+        <input type="text" id="city" placeholder="City" required>
+        <input type="text" id="state" placeholder="State" required>
+        <select id="gender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        <input type="text" id="mobile" placeholder="Mobile Number" required>
+        <input type="email" id="email" placeholder="Email ID" required>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="messages"></div>
+
+    <script>
+        document.getElementById('studentForm').onsubmit = function(event) {
+            event.preventDefault();
+            const messagesDiv = document.getElementById('messages');
+            messagesDiv.innerHTML = '';
+
+            const name = document.getElementById('name').value;
+            const address = document.getElementById('address').value;
+            const city = document.getElementById('city').value;
+            const state = document.getElementById('state').value;
+            const gender = document.getElementById('gender').value;
+            const mobile = document.getElementById('mobile').value;
+            const email = document.getElementById('email').value;
+
+            let hasError = false;
+
+            if (!/^[a-zA-Z\s]+$/.test(name)) {
+                messagesDiv.innerHTML += '<div class="error">Please enter a valid name (letters only).</div>';
+                hasError = true;
+            }
+            if (!/^\d{10}$/.test(mobile)) {
+                messagesDiv.innerHTML += '<div class="error">Please enter a valid mobile number (10 digits).</div>';
+                hasError = true;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                messagesDiv.innerHTML += '<div class="error">Please enter a valid email address.</div>';
+                hasError = true;
+            }
+            if (!name || !address || !city || !state || !gender || !mobile || !email) {
+                messagesDiv.innerHTML += '<div class="error">All fields are required.</div>';
+                hasError = true;
+            }
+
+            if (!hasError) {
+                messagesDiv.innerHTML = '<div class="success">Congratulations! Your information has been submitted successfully!</div>';
+                document.getElementById('studentForm').reset();
+            }
+        };
+    </script>
+</body>
+</html>
