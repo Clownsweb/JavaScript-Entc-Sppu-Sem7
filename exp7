@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Set Operations</h1>
+
+    <h2>Set A:</h2>
+    <div id="setA">apple, mango, orange, grapes, banana</div>
+    
+    <h2>Set B:</h2>
+    <div id="setB">apple</div>
+
+    <h2>Set C:</h2>
+    <div id="setC">mango, orange</div>
+
+    <h3>Results:</h3>
+    <div id="results" class="result"></div>
+
+    <script>
+        const setA = new Set(['apple', 'mango', 'orange', 'grapes', 'banana']);
+        const setB = new Set(['apple']);
+        const setC = new Set(['mango', 'orange']);
+
+        const union = new Set([...setA, ...setB]);
+        const intersection = new Set([...setA].filter(x => setB.has(x)));
+        const difference = new Set([...setA].filter(x => !setC.has(x)));
+        const isSubset = [...setC].every(x => setA.has(x));
+
+        document.getElementById('results').innerHTML = `
+            Union: [${[...union].join(', ')}] <br>
+            Intersection: [${[...intersection].join(', ')}] <br>
+            Difference (A - C): [${[...difference].join(', ')}] <br>
+            Is C a subset of A? ${isSubset}
+        `;
+    </script>
+</body>
+</html>
