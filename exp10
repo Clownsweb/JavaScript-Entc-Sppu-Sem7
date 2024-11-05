@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Using Recursive Function</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            width: 50px;
+        }
+        .countdown {
+            font-size: 48px;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Countdown Using Recursive Function</h1>
+    <input type="number" id="numberInput" placeholder="Enter number">
+    <button id="startButton">Start Countdown</button>
+    <div class="countdown" id="countdown"></div>
+
+    <script>
+        function countdownToZero(seconds) {
+            let countdownNumbers = '';
+            for (let i = seconds; i >= 0; i--) {
+                countdownNumbers += i + ' ';
+            }
+            return countdownNumbers.trim();
+        }
+
+        document.getElementById('startButton').onclick = function() {
+            const inputNumber = parseInt(document.getElementById('numberInput').value);
+            if (!isNaN(inputNumber) && inputNumber >= 0) {
+                const countdownResult = countdownToZero(inputNumber);
+                document.getElementById('countdown').innerText = countdownResult;
+            } else {
+                document.getElementById('countdown').innerText = 'Please enter a valid non-negative number.';
+            }
+        };
+    </script>
+</body>
+</html>
