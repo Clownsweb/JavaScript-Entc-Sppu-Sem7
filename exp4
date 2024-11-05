@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Comparison Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>String Comparison Results</h1>
+
+    <div class="result" id="strictEqualityResult"></div>
+    <div class="result" id="lengthComparisonResult"></div>
+    <div class="result" id="localeComparisonResult"></div>
+
+    <script>
+        const string1 = 'linux';
+        const string2 = 'LINUX';
+
+        const strictEquality1 = string1 === string1; 
+        const strictEquality2 = string1 === string2;
+
+        document.getElementById('strictEqualityResult').innerHTML = `
+            Comparison using Strict Equality (===):<br>
+            Is "linux" equal to "linux"? -› ${strictEquality1} <br>
+            Is "linux" equal to "LINUX"? -> ${strictEquality2} <br>
+        `;
+
+        const string3 = 'linux';
+        const string4 = 'LINUX';
+        
+        const lengthComparison1 = string3.length > string4.length;
+        const lengthComparison2 = string3.length === string4.length;
+
+        document.getElementById('lengthComparisonResult').innerHTML = `
+            Comparison based on String Length:<br>
+            Is the length of "linux" greater than "LINUX"? -> ${lengthComparison1} <br>
+            Is the length of "linux" equal to "linux"? -› ${lengthComparison2} <br>
+        `;
+
+        const string5 = "apple";
+        const string6 = "banana";
+
+        const localeComparison1 = string5.localeCompare(string6);
+        const localeComparison2 = string6.localeCompare(string5);
+        const localeEquality = string3.localeCompare(string3);
+
+        document.getElementById('localeComparisonResult').innerHTML = `
+            Comparison using localeCompare():<br>
+            Does "apple" come before "banana" alphabetically? -› ${localeComparison1} <br>
+            Does "banana" come before "apple" alphabetically? -> ${localeComparison2} <br>
+            Are "linux" and "linux" equal alphabetically? →› ${localeEquality}
+        `;
+    </script>
+</body>
+</html>
