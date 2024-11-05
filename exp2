@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+</head>
+<body>
+    <h2>Multiplication Table</h2>
+
+    <p id="table-result"></p>
+
+    <script>
+        
+        const number = 5;  
+
+      
+        function generateMultiplicationTable(num) {
+            let result = "";
+            for (let i = 1; i <= 10; i++) {
+                result += `${num} x ${i} = ${num * i}<br>`;
+            }
+            return result;
+        }
+
+        
+        document.getElementById("table-result").innerHTML = generateMultiplicationTable(number);
+    </script>
+</body>
+</html>
