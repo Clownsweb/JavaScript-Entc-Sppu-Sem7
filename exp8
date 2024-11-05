@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.5s;
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 18px;
+        }
+        input {
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Our Website</h1>
+    <p>This is a simple homepage created to demonstrate background color changes on events.</p>
+    <input type="text" placeholder="Focus on me!">
+
+    <script>
+        document.body.onmouseover = function() {
+            document.body.style.backgroundColor = 'lightblue';
+        };
+
+        document.body.onmouseout = function() {
+            document.body.style.backgroundColor = 'white';
+        };
+
+        const inputField = document.querySelector('input');
+        
+        inputField.onfocus = function() {
+            document.body.style.backgroundColor = 'lightgreen';
+        };
+
+        inputField.onblur = function() {
+            document.body.style.backgroundColor = 'white';
+        };
+    </script>
+</body>
+</html>
